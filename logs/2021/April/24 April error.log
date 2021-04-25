@@ -1,0 +1,309 @@
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 3, in <module>
+    from Hatenatools import TMB
+  File "/home/rix56/hatena-server-master/Hatenatools/__init__.py", line 3, in <module>
+    from PPM import PPM, TMB
+ModuleNotFoundError: No module named 'PPM'
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 3, in <module>
+    from Hatenatools import TMB
+  File "/home/rix56/hatena-server-master/Hatenatools/__init__.py", line 3, in <module>
+    from PPM import PPMs, TMB
+ModuleNotFoundError: No module named 'PPM'
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 3, in <module>
+    from Hatenatools import TMB
+  File "/home/rix56/hatena-server-master/Hatenatools/__init__.py", line 3, in <module>
+    from ppm import PPM, TMB
+ModuleNotFoundError: No module named 'ppm'
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 3, in <module>
+    from Hatenatools import TMB
+  File "/home/rix56/hatena-server-master/Hatenatools/__init__.py", line 3, in <module>
+    from PPM import PPM, TMB
+ModuleNotFoundError: No module named 'PPM'
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 159, in <module>
+    Database = Database()#is loaded, yesth!
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 18, in __init__
+    self.Newest = [tuple(i.split("\t")) for i in file.split("\n")]#[i] = [creatorID, filename]
+TypeError: a bytes-like object is required, not 'str'
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 2: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 2: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 2: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append(b"\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 0: expected a bytes-like object, str found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 102, in <module>
+    import DB
+  File "/home/rix56/hatena-server-master/DB.py", line 5, in <module>
+    from database import Database
+  File "/home/rix56/hatena-server-master/database/__init__.py", line 3, in <module>
+    from Hatenatools import TMB
+  File "/home/rix56/hatena-server-master/Hatenatools/__init__.py", line 4, in <module>
+    from Hatenatools.UGO import UGO
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265
+    TableOfContents.append(s"\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+                            ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join((b"1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 0: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join(("1", num, labels[0], labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 2: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 265, in Pack
+    TableOfContents.append("\t".join(("1", num, str(labels[0]), labels[1], labels[2], labels[3], labels[4])))
+TypeError: sequence item 3: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 285, in Pack
+    TableOfContents.append("\t".join(["4", link, trait, label] + list(other)))
+TypeError: sequence item 3: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 285, in Pack
+    TableOfContents.append("\t".join(["4", link, trait, label] + list(other)))
+TypeError: sequence item 3: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 285, in Pack
+    TableOfContents.append("\t".join(["4", link, str(trait), label] + list(other)))
+TypeError: sequence item 3: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 285, in Pack
+    TableOfContents.append("\t".join(["4", link, str(trait), label] + str(list(other))))
+TypeError: can only concatenate list (not "str") to list
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 285, in Pack
+    TableOfContents.append("\t".join(["4", link, str(trait), label] + list(other)))
+TypeError: sequence item 3: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 109, in <module>
+    site = server.Site(hatena.Setup())
+  File "/home/rix56/hatena-server-master/hatena.py", line 198, in Setup
+    root = Root()
+  File "/home/rix56/hatena-server-master/hatena.py", line 50, in __init__
+    self.dsResource = ds()
+  File "/home/rix56/hatena-server-master/hatena.py", line 81, in __init__
+    self.region = UgoRoot()
+  File "/home/rix56/hatena-server-master/hatena.py", line 97, in __init__
+    LoadHatenadirStructure(self)
+  File "/home/rix56/hatena-server-master/hatena.py", line 174, in LoadHatenadirStructure
+    Resource.putChild(filename[:-3], UGOXMLResource(os.path.join(path, filename)))
+  File "/home/rix56/hatena-server-master/hatena.py", line 148, in __init__
+    self.ugofile = self.ugofile.Pack()
+  File "/home/rix56/hatena-server-master/Hatenatools/UGO.py", line 292, in Pack
+    ExtraData = "".join(ExtraData)
+TypeError: sequence item 0: expected str instance, bytes found
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 133, in <module>
+    site.buildProtocol = funcType(buildProtocol, site, server.Site)
+TypeError: method expected 2 arguments, got 3
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 133, in <module>
+    site.buildProtocol = funcType(buildProtocol)
+TypeError: method expected 2 arguments, got 1
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 133, in <module>
+    site.buildProtocol = funcType(buildProtocol, server.Site())
+TypeError: __init__() missing 1 required positional argument: 'resource'

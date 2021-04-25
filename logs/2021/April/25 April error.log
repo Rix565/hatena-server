@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/rix56/hatena-server-master/server.py", line 107, in <module>
+    import hatena
+  File "/home/rix56/hatena-server-master/hatena.py", line 100
+    if name == b"":
+TabError: inconsistent use of tabs and spaces in indentation

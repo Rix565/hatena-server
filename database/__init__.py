@@ -8,7 +8,7 @@ class Database:
 	def __init__(self):
 		#read database stuff into memory:
 		if os.path.exists("database/new_flipnotes.dat"):
-			f = open("database/new_flipnotes.dat", "rb")#contains the newest 5000 flipnotes
+			f = open("database/new_flipnotes.dat", "r")#contains the newest 5000 flipnotes
 			file = f.read()
 			f.close()
 		else:
@@ -46,7 +46,7 @@ class Database:
 			self.new = False
 		
 		#write creator changes to file:
-		for ID in self.Creator.keys():
+		for ID in list(self.Creator.keys()):
 			f = open("database/Creators/%s/flipnotes.dat" % ID, "wb")
 			f.write("\n".join(("\t".join(map(str, i)) for i in self.Creator[ID])))
 			f.close()
@@ -69,7 +69,7 @@ class Database:
 			
 			#update to newer format:
 			#current format = [filename, views, stars, green stars, red stars, blue stars, purple stars, Channel, Downloads]
-			for i in xrange(len(ret)):
+			for i in range(len(ret)):
 				if len(ret[i]) < 9:
 					filename = ret[i][0]#take this as a give for now
 					for n, default in enumerate((filename, 0, 0, 0, 0, 0, 0, "", 0)):
@@ -132,10 +132,17 @@ class Database:
 				self.Views += 1
 				return True
 		return False
-	def AddStar(self, CreatorID, filename, amount=1):#todo: add support for other colored stars
+	def AddStar(self, CreatorID, filename, amount=1, color='yellow'):
+		starindices = {
+			'yellow': 2,
+			'green': 3,
+			'red': 4,
+			'blue': 5,
+			'purple': 6
+		}
 		for i, flipnote in enumerate(self.GetCreator(CreatorID, True) or []):
 			if flipnote[0] == filename:
-				self.Creator[CreatorID][i][2] = int(flipnote[2]) + amount
+				self.Creator[CreatorID][i][starindices[color]] = int(flipnote[starindices[color]]) + amount
 				self.Stars += 1
 				return True
 		return False

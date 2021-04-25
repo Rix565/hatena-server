@@ -3,13 +3,13 @@ useWSGI = False#not fully tested and WILL NOT support multible instances/workers
 port = 8080
 
 #import:
-print "Importing modules...",
+print("Importing modules...", end=' ')
 from twisted.web import server#filehost
 from twisted.internet import reactor
 if useWSGI: from twisted.application import internet, service
 
 import sys, time, os, atexit
-print "Done!"
+print("Done!")
 
 #set working directory
 if os.path.dirname(__file__):
@@ -23,7 +23,7 @@ else:
 		os.chdir(path)
 		break
 	else:
-		print "Can't force working directory, may fail crash!"
+		print("Can't force working directory, may fail crash!")
 
 #Logging
 class Log:
@@ -35,7 +35,7 @@ class Log:
 		def flush(self):#ipython needs this
 			pass
 	def __init__(self):
-		minutes, seconds = map(int, time.strftime("%M %S").split(" "))
+		minutes, seconds = list(map(int, time.strftime("%M %S").split(" ")))
 		minutes = 59 - minutes
 		seconds = 59 - seconds
 		reactor.callLater(60*minutes + seconds + 5, self.HandleUpdate)
@@ -61,7 +61,7 @@ class Log:
 	def HandleUpdate(self):#Automatically updates the handles for new filenames every hour
 		reactor.callLater(60*60, self.HandleUpdate)
 		
-		print time.strftime("[%H:%M:%S] Handle update")
+		print(time.strftime("[%H:%M:%S] Handle update"))
 		
 		#make year folder
 		if not os.path.exists("logs/"+time.strftime("%Y")):
@@ -92,26 +92,26 @@ class Log:
 	#=====
 	def write(self, String, Silent=False):
 		if not Silent:
-			print time.strftime("[%H:%M:%S]"), String
+			print(time.strftime("[%H:%M:%S]"), String)
 		self.Activityhandle.write(time.strftime("[%H:%M:%S] ") + String + "\n")
 	Print = write
 Log = Log()
 
 #init database:
-print "Initializing flipnote database...",
+print("Initializing flipnote database...", end=' ')
 import DB
-print "Done!"
+print("Done!")
 
 #Setup hatena server:
-print "Setting up hatena site...",
+print("Setting up hatena site...", end=' ')
 import hatena
 hatena.ServerLog = Log
 site = server.Site(hatena.Setup())
-print "Done!"
+print("Done!")
 
 
 #make the hatena server accept proxy connections:
-print "Setting up proxy hack...",
+print("Setting up proxy hack...", end=' ')
 silent = True
 old_buildProtocol = site.buildProtocol
 def buildProtocol(self, addr):
@@ -122,19 +122,18 @@ def buildProtocol(self, addr):
 	old_dataReceived = protocol.dataReceived
 	def dataReceived(self, data):
 		#i'll assume the GET request doesn't get fragmented, which should be safe with a mtu at 1500, a crash doesn't matter really anyway. too much work for a simple twisted upgrade on a dropped project
-		for check, repl in (("GET http://flipnote.hatena.com", "GET "), ("POST http://flipnote.hatena.com", "POST ")):
-			if check in data:
+		for check, repl in ((b"GET http://flipnote.hatena.com", b"GET "), (b"POST http://flipnote.hatena.com", b"POST ")):
+			if str(check) in str(data):
 				data = data.replace(check, repl)
 		old_dataReceived(data)
 	funcType = type(protocol.dataReceived)
-	protocol.dataReceived = funcType(dataReceived, protocol, protocol.__class__)
+	protocol.dataReceived = funcType(dataReceived, (protocol, protocol.__class__))
 	return protocol
 funcType = type(site.buildProtocol)
-site.buildProtocol = funcType(buildProtocol, site, server.Site)
-print "Done!"
+site.buildProtocol = funcType(buildProtocol, (site, server.Site))
+print("Done!")
 
-#run!
-print "Server start!\n"
+print("Server start!\n")
 if useWSGI:
 	#probably doesn't work
 	application = service.Application('web')
@@ -148,3 +147,4 @@ else:
 	
 	#dunn
 	Log.write("Server shutdown", True)
+

@@ -17,10 +17,10 @@ class AccessDenied(resource.Resource):
 	isLeaf = True
 	def render(self, request):
 		ServerLog.write("%s got 403 when requesting \"%s\"" % (request.getClientIP(), request.path), Silent)
-		print "debug:",request.getAllHeaders()
+		print("debug:",request.getAllHeaders())
 		
 		request.setResponseCode(403)
-		return "403 - Access denied\nThis proxy is only allowed to use for Flipnote Hatena for the DSi."
+		return b"403 - Access denied\nThis proxy is only allowed to use for Flipnote Hatena for the DSi."
 AccessDenied = AccessDenied()
 class NotFound(resource.Resource):
 	isLeaf = True
@@ -30,7 +30,7 @@ class NotFound(resource.Resource):
 		
 		ServerLog.write("%s got 404 when requesting \"%s\"" % (request.getClientIP(), path), Silent)
 		request.setResponseCode(404)
-		return "404 - Not Found\nThis proxy is only allowed to use for Flipnote Hatena for the DSi."
+		return b"404 - Not Found\nThis proxy is only allowed to use for Flipnote Hatena for the DSi."
 NotFound = NotFound()
 class ConnectionTest(resource.Resource):#used for people setting up the proxy in their DSi. It's nice to see it's actually working.
 	#http://conntest.nintendowifi.net/
@@ -38,7 +38,7 @@ class ConnectionTest(resource.Resource):#used for people setting up the proxy in
 	def render(self, request):
 		ServerLog.write("%s performed a connection test" % request.getClientIP(), True)
 		request.responseHeaders.setRawHeaders('X-Organization', ['Nintendo'])#i hope this isn't illegal...
-		return '<html><head><title>HTML Page</title></head><body bgcolor="#FFFFFF">This is test.html page</body></html>'
+		return  b'<html><head><title>HTML Page</title></head><body bgcolor="#FFFFFF">This is test.html page</body></html>'
 ConnectionTest = ConnectionTest()
 
 #Root structure:
@@ -51,25 +51,25 @@ class Root(resource.Resource):#filters out non-hantena clients
 		self.cssResource = static.File("hatenadir/css/")
 		self.imagesResource = static.File("hatenadir/images/")
 	def getChild(self, name, request):
-		if "x-dsi-sid" not in request.getAllHeaders():
-			if "host" in request.getAllHeaders():
-				if request.getAllHeaders()["host"] == "conntest.nintendowifi.net":
+		if b"x-dsi-sid" not in request.getAllHeaders():
+			if b"host" in request.getAllHeaders():
+				if request.getAllHeaders()[b"host"] == b"conntest.nintendowifi.net":
 					return ConnectionTest
-			return AccessDenied
+				return AccessDenied
 		
-		if name == "ds":
+		if name == b"ds":
 			return self.dsResource
-		elif name == "css":
+		elif name == b"css":
 			return self.cssResource
-		elif name == "images":
+		elif name == b"images":
 			return self.imagesResource
-		elif name == "":
+		elif name == b"":
 			return self
 		
 		#return NotFound
 		return self
 	def render(self, request):
-		if request.getHost() == "conntest.nintendowifi.net":
+		if request.getHost() == b"conntest.nintendowifi.net":
 			return ConnectionTest
 		Log(request, "root")
 		return "Welcome to hatena.pbsds.net!\nThis is still in early stages, so please don't expect too much."
@@ -79,16 +79,16 @@ class ds(resource.Resource):#child of Root
 		resource.Resource.__init__(self)
 		
 		self.region = UgoRoot()
-		self.regions = ("v2-xx", "v2-eu", "v2-us", "v2-jp")
+		self.regions = (b"v2-xx", b"v2-eu", b"v2-us", b"v2-jp")
 	def getChild(self, name, request):
 		if name in self.regions:
 			return self.region
-		elif name == "":
+		elif name == b"":
 			return self
 		return NotFound
 	def render(self, request):
 		Log(request)
-		return "ds desu"
+		return b"ds desu"
 class UgoRoot(resource.Resource):#child of ds. (v2-xx)
 	isLeaf = False
 	def __init__(self):
@@ -96,12 +96,12 @@ class UgoRoot(resource.Resource):#child of ds. (v2-xx)
 		
 		LoadHatenadirStructure(self)
 	def getChild(self, name, request):
-		if name == "":
+		if name.decode() == "index.ugo":
 			return self
 		return NotFound
 	def render(self, request):
 		Log(request, "ugoroot")
-		return "UgoRoot desu"
+		return b"UgoRoot desu"
 
 #UgoRoot filestructure:
 class FileResource(resource.Resource):
@@ -112,7 +112,7 @@ class FileResource(resource.Resource):
 		self.Store = Store
 		
 		if Store:
-			f = open(filepath, "rb")
+			f = open(filepath, "r")
 			self.file = f.read()
 			f.close()
 		else:
@@ -156,16 +156,16 @@ class UGOXMLResource(resource.Resource):
 class FolderResource(resource.Resource):
 	isLeaf = False
 	def getChild(self, name, request):
-		if name == "":
+		if name == b"":
 			return self
 		return NotFound
 	def render(self, request):
 		path = "/".join(request.path.split("/")[3:])
 		Log(request, path)
-		return "I am a folder, but I'm to lazy to list my contents..."
+		return b"I am a folder, but I'm to lazy to list my contents..."
 def LoadHatenadirStructure(Resource, path=os.path.join("hatenadir", "ds", "v2-xx")):
 	for root, dirs, files in os.walk(path):
-		if root <> path: continue#use recursion instead
+		if root != path: continue#use recursion instead
 		for filename in files:
 			filetype = filename.split(".")[-1].lower()
 			os.path.join(path, filename)
@@ -177,9 +177,9 @@ def LoadHatenadirStructure(Resource, path=os.path.join("hatenadir", "ds", "v2-xx
 					pyfile = imp.load_source("pyfile", os.path.abspath(os.path.join(path, filename)))
 				except ImportError as err:
 					pyfile = None
-					print "Error!"
-					print "Failed to import the python file \"%s\"" % os.path.join(path, filename)
-					print err
+					print("Error!")
+					print("Failed to import the python file \"%s\"" % os.path.join(path, filename))
+					print(err)
 				
 				if pyfile:
 					Resource.putChild(filename[:-3], pyfile.PyResource())
@@ -188,7 +188,7 @@ def LoadHatenadirStructure(Resource, path=os.path.join("hatenadir", "ds", "v2-xx
 			else:
 				Resource.putChild(filename, FileResource(os.path.join(path, filename)))
 		for foldername in dirs:# os.path.isdir(i):
-			if foldername[:2] <> "__":
+			if foldername[:2] != "__":
 				folder = FolderResource()
 				LoadHatenadirStructure(folder, os.path.join(path, foldername))
 				Resource.putChild(foldername, folder)
@@ -197,26 +197,4 @@ def LoadHatenadirStructure(Resource, path=os.path.join("hatenadir", "ds", "v2-xx
 def Setup():
 	root = Root()
 	return root
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
